@@ -1,5 +1,4 @@
 # Automatic Street Light Controller
-
 ##  AIM:
 To design and implement Automatic Street Light controller using Arduino UNO controller.
 
@@ -37,12 +36,38 @@ The figure-1 shows that when the torch is turned on, the resistance of the LDR d
 LDR Features of LDR are as follows: 
 1. High reliability. 2. Light weight. 3. Wide spectral response. 4. Wide ambient temperature range.
 
-
 ## PROGRAM:
+```c
+int sensorPin = A0;
+int sensorValue = 0;
+void setup()
+{
+Serial.begin(9600);
+pinMode(13, OUTPUT);
+}
+void loop()
+{
+sensorValue = analogRead(sensorPin);
+Serial.print("OUTPUT:");
+Serial.println(sensorValue);
+delay(500);
+if(sensorValue<=500)
+{
+digitalWrite(13, HIGH);
 
+delay(5000);
+}
+else
+{
+digitalWrite(13, LOW);
+
+delay(5000);
+}
+}
+```
 ## CIRCUIT DIAGRAM:
-
+![](PIOT_EX07-1.png)
 ## OUTPUT:
-
+![](PIOT_EX07-2%5D.png)
 ## RESULT:
 Thus the Automatic Street Light controller was implemented using Arduino UNO controller.
